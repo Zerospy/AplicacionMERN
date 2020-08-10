@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import SidenavModal from '../components/SidenavModal';
 
-class App extends Component {
+
+class App extends React.Component {
 
         constructor(){
                 super();
@@ -13,7 +15,11 @@ class App extends Component {
                  };
                     this.handleChange = this.handleChange.bind(this);
                     this.addTask = this.addTask.bind(this);
+
+               
+                            
         }
+            
 
         addTask(e) {           
             if(this.state._id){
@@ -82,6 +88,8 @@ class App extends Component {
                     
                  componentDidMount(){
                      this.fetchTasks();
+
+                 
                 }
        
         fetchTasks(){
@@ -98,18 +106,22 @@ class App extends Component {
 
                     });
             }
+
+
+      
+            
           
     render(){
 
-        return(
-                    <div>
-                        <nav className="light-blue darken-4"> 
-                        <div className="container">
-                            <a className="band-logo" href="/">Administrador de negocios Online</a>
-                        </div>
-                        </nav>
+        
 
-                                <div className="container">
+        return(
+
+
+                    <div className="space-nav">
+                        
+                              <SidenavModal/>
+                      <div className="container">
                                         <div className="row"> 
                                                 <div className="col s5">
                                                     <div className="card">
@@ -118,8 +130,7 @@ class App extends Component {
                                                                 <div className="row">   
                                                                     <div className="input-field col s12">
                                                                         <input name="producto" onChange={this.handleChange} type="text" placeholder="Nombre Producto" value={this.state.producto}/>
-                                                                    </div>
-                                                                   
+                                                                    </div> 
                                                                 </div>   
                                                                 <div className="row">   
                                                                     <div className="input-field col s12">
@@ -129,6 +140,7 @@ class App extends Component {
                                                                     </div>
                                                                 
                                                                 </div>   
+                                                            
                                                                 <button type="submit" className="btn btn-light darken-4"> Send </button>
                                                             </form>
                                                         </div>
@@ -143,22 +155,21 @@ class App extends Component {
                                                                    <th>Descripcion</th>
                                                                    <th>Editar</th>
                                                                    <th>Borrar</th>
-
                                                              </tr>
                                                         </thead>
                                                         <tbody> 
                                                             { 
                                                             this.state.tasks.map(task => {
                                                                 return ( 
+
+
                                                                     <tr key={task._id}> 
                                                                         <td> {task.producto}</td>
                                                                         <td> {task.description}</td>
-                                                                        <td>      
+                                                                         <td>      
                                                                                   <button className="btn light-blue darken-4" onClick={() => this.editTask(task._id) }><i className="material-icons">edit</i> </button>  
-                                                                                    
                                                                          </td>
                                                                          <td> <button className="btn light-blue darken-4" style={{margin: '4px'}} onClick={ ()=> this.deleteTask(task._id) }><i className="material-icons">delete</i></button> </td>
-                                                                  
                                                                     </tr>
                                                                 )
                                                             })
@@ -171,7 +182,7 @@ class App extends Component {
                                 </div>
 
                     </div>
-        )
+        );
     }
 }
 export default App;

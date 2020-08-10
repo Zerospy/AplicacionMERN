@@ -1,7 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
-
 const { mongoose } = require('./database');
 
 const app = express();
@@ -13,6 +12,7 @@ app.set('port', process.env.PORT || 3000 );   //el || 3000 lo ponemos porque est
 app.use(morgan('dev'));  
 app.use(express.json());   // este middl    eware permite enviar y recibir datos tipo json , va excelente con mongodb 
 
+
 //Routes
 app.use('/api/tasks', require('./routes/task.routes'));  //Cada vez que ingresamos a la direccion /api/tasks nos redirecciona a la ruta del require
 
@@ -22,5 +22,5 @@ app.use(express.static(path.join(__dirname, 'public')));
 //inicializar el servidor
 
 app.listen(app.get('port'), ()=>   {console.log(`Server on port ${app.get('port')}`)
-            });   
-
+            });  
+            
