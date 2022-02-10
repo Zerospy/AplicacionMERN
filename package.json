@@ -18,7 +18,7 @@
     "mdbreact": "^4.27.0",
     "mongoose": "^5.9.22",
     "morgan": "^1.10.0",
-    "node-sass": "^4.14.1"
+    "node-sass": "^7.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.10.5",
